@@ -10,12 +10,10 @@ var Router *gin.Engine
 
 func main() {
 	Router = gin.Default()
-	lead := Router.Group("/leads")
+	members := Router.Group("/members")
 	{
-		lead.GET("", func(ctx *gin.Context) {
-			ctx.JSON(200, gin.H{
-				"lead": "I am a lead",
-			})
+		members.GET("", func(context *gin.Context) {
+			context.JSON(200, gin.H{"Message": "Test"})
 		})
 		fmt.Println("Starting service!!")
 		log.Fatal(Router.Run(":8000"))
