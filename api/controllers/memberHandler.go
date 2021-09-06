@@ -1,10 +1,10 @@
 package controllers
 
 import (
-	"../data"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
+	"github.com/zob456/perch-fms/api/data"
 )
 
 func GetMemberList(c *gin.Context) {
