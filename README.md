@@ -1,7 +1,7 @@
 ## Perch Facility Management Service
-(perch-fm)
+(perch-fms)
 
 
 Build using gin
 
-[![gin](https://github.com/zob456/perch-gms/blob/main/imgs/gin_logo.png?raw=true)](https://pkg.go.dev/github.com/gin-gonic/gin#section-readme)
+[![gin](https://github.com/zob456/perch-fms/blob/main/imgs/gin_logo.png?raw=true)](https://pkg.go.dev/github.com/gin-gonic/gin#section-readme)
