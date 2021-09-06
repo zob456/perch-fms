@@ -8,7 +8,7 @@ ENV PATH="$GOPATH/bin:$PATH"
 
 RUN apk --update add --no-cache git ca-certificates shadow \
     && update-ca-certificates \
-    && mkdir -p /home/dockeruser/perchfm/bin \
+    && mkdir -p /home/dockeruser/perchfms/bin \
     && groupadd -r dockeruser \
     && useradd -r -g dockeruser dockeruser
 

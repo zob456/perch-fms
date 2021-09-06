@@ -1,19 +1,20 @@
 -- MESSAGES SCHEMA
 
-CREATE SCHEMA IF NOT EXISTS messages;
+CREATE SCHEMA IF NOT EXISTS PlanetFitness;
 
-SET SCHEMA 'messages';
-CREATE TABLE IF NOT EXISTS "Message"
+SET SCHEMA 'PlanetFitness';
+CREATE TABLE IF NOT EXISTS "Members"
 (
-    "MessageID"     SERIAL PRIMARY KEY NOT NULL,
-    "MessageTypeID" integer            NOT NULL,
-    "Content"       text               NOT NULL,
-    "SenderID"      integer            NOT NULL,
-    "Read"          bool               NOT NULL,
-    "ChannelID"     integer            NOT NULL
+    "MemberID"                  SERIAL PRIMARY KEY NOT NULL,
+    "MemberFirstName"           text               NOT NULL,
+    "MemberLastName"            text               NOT NULL,
+    "MemberEmail"               text               NOT NULL,
+    "MemberMobilePhone"         integer            NOT NULL,
+    "MemberEmergencyContact1ID" integer            NOT NULL,
+    "MemberPaymentID"           integer            NOT NULL,
+    "MemberUsageID"             integer            NOT NULL
 );
 
-SET SCHEMA 'messages';
 CREATE TABLE IF NOT EXISTS "Channels"
 (
     "ChannelID"   SERIAL PRIMARY KEY NOT NULL,
