@@ -1,7 +1,7 @@
 package data
 
 import (
-	"../models"
+	"github.com/zob456/perch-fms/models"
 	"database/sql"
 )
 

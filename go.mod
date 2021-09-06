@@ -1,4 +1,4 @@
-module perch-fms
+module github.com/zob456/perch-fms
 
 go 1.16
 
