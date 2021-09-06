@@ -1,17 +1,11 @@
-# --- base -------------------------------------------------------------------
-FROM golang:1.16.7-alpine AS base
+FROM golang:1.17-alpine
 
-WORKDIR /ayva
-ENV GO111MODULE=on
-ENV GOPATH="/go"
-ENV PATH="$GOPATH/bin:$PATH"
+COPY api/main.go src/perchfms/api/main.go
+COPY go.mod  src/perchfms/go.mod
+COPY go.sum src/perchfms/go.sum
 
-RUN apk --update add --no-cache git ca-certificates shadow \
-    && update-ca-certificates \
-    && mkdir -p /home/dockeruser/perchfms/bin \
-    && groupadd -r dockeruser \
-    && useradd -r -g dockeruser dockeruser
+WORKDIR /go/src/perchfms/api/
+RUN CGO_ENABLED=0 GOOS=linux GARCH=amd64 go build -installsuffix cgo -o build/api .
 
-COPY go.mod .
-COPY go.sum .
-RUN go mod download
+CMD ["./build/api"]
+EXPOSE 8000
