@@ -1,3 +1,10 @@
+#!/bin/bash
+set -e
+
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
+
+\c perchfmsdb;
+
 -- Client SCHEMA
 
 CREATE SCHEMA IF NOT EXISTS "GloboGym";
@@ -264,3 +271,5 @@ CREATE TABLE IF NOT EXISTS "UserSettings"
 
 INSERT INTO settings."UserSettings"("SettingID", "SettingName")
 VALUES (1, 'Theme')
+
+EOSQL

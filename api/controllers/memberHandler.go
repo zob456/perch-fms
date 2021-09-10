@@ -1,14 +1,23 @@
 package controllers
 
 import (
+	"database/sql"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
-	"github.com/zob456/perch-fms/api/data"
+	"perchfms/api/data"
 )
 
-func GetMemberList(c *gin.Context) {
-	memberList, err := data.SelectMemberList()
+type MemberHandlers struct {
+	db *sql.DB
+}
+
+func NewMemberHandler(db *sql.DB) *MemberHandlers {
+	return &MemberHandlers{db: db}
+}
+
+func(h *MemberHandlers) GetMemberList(c *gin.Context) {
+	memberList, err := data.SelectMemberList(h.db)
 	if err != nil {
 		log.Println(err)
 		c.JSON(http.StatusNotFound, gin.H{"ERROR": "NO members found. Bad query"} )

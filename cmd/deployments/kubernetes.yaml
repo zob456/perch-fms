@@ -1,0 +1,19 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: perchfms-api
+spec:
+  selector:
+    matchLabels:
+      app: perchfms-api
+  template:
+    metadata:
+      labels:
+        app: perchfms-api
+    spec:
+      containers:
+        - name: perchfms-api
+          image: perchfms-api
+          ports:
+            - containerPort: 8000

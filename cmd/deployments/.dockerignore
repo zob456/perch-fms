@@ -1,0 +1,16 @@
+*
+!pkg/
+!apps/
+!vendor/
+!v2/
+!v3/
+!go.mod
+!go.sum
+!tests/
+/node_modules/
+**/dist/
+
+**/node_modules/
+**/elm-stuff/
+
+/tests/node_modules/

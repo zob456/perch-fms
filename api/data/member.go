@@ -1,15 +1,22 @@
 package data
 
 import (
-	"../models"
 	"database/sql"
+	"perchfms/api/models"
 )
 
-var db *sql.DB
-
-func SelectMemberList() ([]*models.Member, error) {
+func SelectMemberList(db *sql.DB) ([]*models.Member, error) {
 	/*language=PostgreSQL*/
-	const query = `SELECT "MemberFirstName" FROM "GloboGym"."vw_MemberList"`
+	const query = `SELECT 
+       "MemberID",
+       "MemberUsername",
+       "MemberFirstName",
+       "MemberLastName",
+       "AddressLine1",
+       "AddressLine2",
+       "City",
+       "PostalCode"
+    FROM "GloboGym"."vw_MemberList"`
 
 	var members []*models.Member
 	stmt, err := db.Prepare(query)
@@ -21,8 +28,18 @@ func SelectMemberList() ([]*models.Member, error) {
 		return nil, err
 	}
 	for rows.Next() {
-		var member *models.Member
-		err = rows.Scan(&members)
+		member := &models.Member{}
+		member.MemberCountry = "USA"
+		err = rows.Scan(
+			&member.MemberID,
+			&member.MemberUsername,
+			&member.MemberFirstName,
+			&member.MemberLastName,
+			&member.MemberAddressLine1,
+			&member.MemberAddressLine2,
+			&member.MemberCountry,
+			&member.MemberPostalCode,
+			)
 		if err != nil {
 			return nil, err
 		}
